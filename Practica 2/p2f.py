@@ -17,7 +17,7 @@ filename="devs.txt"
 mailsender = "ibrahimqv99@gmail.com"
 mailreceip = "tanibet.escom@gmail.com"
 mailserver = 'smtp.gmail.com: 587'
-password = 'i123581321Q.'
+password = 'a'#Contraseña
 
 #Funcion envio de correo
 def send_alert_attached(subject,cuerpo):
