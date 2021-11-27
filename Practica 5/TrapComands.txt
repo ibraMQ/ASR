@@ -1,0 +1,22 @@
+
+Genericos:
+(coldStart)snmptrap -v 1 -c comunity localhost TRAP-TEST-MIB::demotraps "" 0 0 "" IF-MIB::ifIndex i 1
+(authFailure)snmptrap -v 1 -c comunity localhost TRAP-TEST-MIB::demotraps "" 4 0 "" IF-MIB::ifIndex i 1
+(linkDown)snmptrap -v 1 -c comunity localhost TRAP-TEST-MIB::demotraps "" 2 0 "" IF-MIB::ifIndex i 1
+(linkUp)snmptrap -v 1 -c comunity localhost TRAP-TEST-MIB::demotraps "" 3 0 "" IF-MIB::ifIndex i 1
+Enterprise:
+snmptrap -v 1 -c comunity localhost TRAP-TEST-MIB::demotraps "" 6 17 "" 1.11.12.13.14.15 s "test"
+4)
+linkDown: corta conexion
+linkUp: establece conexion
+coldStart: reinicia router
+5)
+Genericas:
+(ColdStart)traphandle .1.3.6.1.6.3.1.1.5.1 /usr/bin/python3.8 -s /home/ibrahim/ADM/NotifyC.py
+(linkdown)traphandle .1.3.6.1.6.3.1.1.5.3 /usr/bin/python3.8 -s /home/ibrahim/ADM/NotifyD.py
+(linkUp)traphandle .1.3.6.1.6.3.1.1.5.4 /usr/bin/python3.8 -s /home/ibrahim/ADM/NotifyU.py
+(authfailure) traphandle .1.3.6.1.6.3.1.1.5.5 /usr/bin/python3.8 -s /home/ibrahim/ADM/NotifyS.py
+Enterprise:
+traphandle TRAP-TEST-MIB /usr/bin/python3.8 -s /home/ibrahim/ADM/NotifyE.py
+6,7)
+Crear NotifyD.py en python para enviar mensaje, el resto solo imprime el tipo de alerta que recibiste
